@@ -32,16 +32,26 @@ plato basado en la receta y los precios de los ingredientes.
 en el costo y el margen de ganancia deseado.
 ----------
 '''
-from tkinter import tkk
-from tkinter import *
-import sqlite3
+#funcion que agrega ingredientes y retorna la lista de ingredientes agregados
+def agregarIngrediente ():
+    ingredientes = []
 
-class Producto:
-  def __init__ (self, window):
-    self.wind = window
-    self.wind.title("SmartProfit")
+    salir = 1
+    while salir != 0:
+        nombre_ingre= input("Ingresa el nombre del ingrediente para agregar: ")
+        precio = float(input("Ingresa el precio del ingrediente: "))   
+        ingre = {
+        "nombre" : nombre_ingre,
+        "precio" : precio
+        }
+        ingredientes.append(ingre)
+        print("Producto Agregado!")
 
-if __init__ == __main__:
-    window = Tk()
-    aplication = Producto(window)
-    window.mainloop()
+        sal = int(input("Presiona 1 para agregar otro ingrediente, 0 para salir: "))
+        if(sal == 0):
+            salir = 0
+    return ingredientes
+
+
+if __name__ == "__main__":
+    print(agregarIngrediente())    
