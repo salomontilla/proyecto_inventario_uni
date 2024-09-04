@@ -32,3 +32,16 @@ plato basado en la receta y los precios de los ingredientes.
 en el costo y el margen de ganancia deseado.
 ----------
 '''
+from tkinter import tkk
+from tkinter import *
+import sqlite3
+
+class Producto:
+  def __init__ (self, window):
+    self.wind = window
+    self.wind.title("SmartProfit")
+
+if __init__ == __main__:
+    window = Tk()
+    aplication = Producto(window)
+    window.mainloop()
