@@ -74,7 +74,13 @@ def agregrar():
 
 def ver_platos():
     print("---PLATOS AGREGADOS---\n")
-    print(platos)
+    if(len(platos) == 0):
+        print("No hay platos para mostrar!")
+    else: print(platos)
+    salir = int(input("Ingresa 1 para volver: "))
+    if salir == 1:
+        display_menu()
+       
 def eliminar():
     print("eliminar")
 def modificar():
