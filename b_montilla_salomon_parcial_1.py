@@ -76,8 +76,10 @@ def ver_platos():
     print("---PLATOS AGREGADOS---\n")
     if(len(platos) == 0):
         print("No hay platos para mostrar!")
-    else: print(platos)
-    salir = int(input("Ingresa 1 para volver: "))
+    else:
+        for plato in platos:
+            print(plato)
+    salir = int(input("\nIngresa 1 para volver: "))
     if salir == 1:
         display_menu()
        
