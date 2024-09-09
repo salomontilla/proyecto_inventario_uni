@@ -17,7 +17,7 @@ Gestión de platos:
 platos al inventario con sus costos respectivos.
 
 2. Actualizar platos: Modificar la información de 
-un ingrediente existente (precio, cantidad, etc.).
+un plato existente (precio, cantidad, etc.).
 
 3. Eliminar platos: Remover platos que ya no 
 se utilizan.
