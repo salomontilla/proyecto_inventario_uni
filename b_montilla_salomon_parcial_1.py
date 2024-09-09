@@ -32,6 +32,7 @@ plato basado en la receta y los precios de los ingredientes.
 en el costo y el margen de ganancia deseado.
 ----------
 '''
+<<<<<<< HEAD
 #funcion que agrega ingredientes y retorna la lista de ingredientes agregados
 def agregarIngrediente ():
     ingredientes = []
@@ -55,3 +56,62 @@ def agregarIngrediente ():
 
 if __name__ == "__main__":
     print(agregarIngrediente())    
+=======
+#Esta funcion despliega el menú de opciones
+def display_menu():
+    salir = 0
+    while salir != 1:
+        print("---INVENTARIO DE PLATOS---\n")
+        print(" 1. Agregar plato\n 2. Eliminar plato\n 3. Modificar Plato\n 4. Ver Platos\n 5. Salir")
+        opcion = int(input("\nSelecciona una opción: "))
+        match opcion:
+            case 1:
+                agregrar()
+                break
+            case 2:
+                eliminar()
+                break
+            case 3:
+                modificar()
+                break
+            case 4:
+                ver_platos()
+                break
+            case 5:
+                break
+            case _:
+                print("Esa opción no está disponible!\n")
+#Esta funcion permite agregrar platos al inventario
+platos = []
+def agregrar():
+    salir = 1
+    while salir != 0:
+        nombre_ingre = input("Ingresa el nombre de el plato: ")
+        cantidad = int(input("Ingresa el stock del plato: "))
+        precio = float(input("Ingresa el precio del plato: "))
+        plato = {"nombre":nombre_ingre, "cantidad":cantidad, "precio":precio}
+        platos.append(plato)
+        
+        salir = int(input("Ingresa 1 para agregar otro plato / 0 para salir: "))
+        if salir == 0:
+            display_menu()
+            salir = 0
+
+def ver_platos():
+    print("---PLATOS AGREGADOS---\n")
+    if(len(platos) == 0):
+        print("No hay platos para mostrar!")
+    else:
+        for plato in platos:
+            print(plato)
+    salir = int(input("\nIngresa 1 para volver: "))
+    if salir == 1:
+        display_menu()
+       
+def eliminar():
+    print("eliminar")
+def modificar():
+    print("modificar")
+if __name__ == "__main__":
+    display_menu()
+>>>>>>> a0289126079f1c8568e28b1e83281e2a880da0e4
