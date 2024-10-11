@@ -39,7 +39,7 @@ def display_menu():
         opcion = int(input("\nSelecciona una opción: "))
         match opcion:
             case 1:
-                agregrar()
+                agregar()
                 break
             case 2:
                 if len(platos) != 0:
@@ -65,7 +65,7 @@ def display_menu():
 
 #Esta funcion permite agregrar platos al inventario
 platos = []
-def agregrar():
+def agregar():
     salir = 1
     while salir != 0:
         nombre_ingre = input("Ingresa el nombre de el plato: ")
