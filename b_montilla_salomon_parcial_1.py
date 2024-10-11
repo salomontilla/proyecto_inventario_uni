@@ -64,6 +64,7 @@ def display_menu():
                 break
             case _:
                 print("Esa opción no está disponible!\n")
+
 #Esta funcion permite agregrar platos al inventario
 platos = []
 def agregrar():
@@ -80,18 +81,29 @@ def agregrar():
             display_menu()
             salir = 0
 
+# Esta función permite ver los platos en el inventario
 def ver_platos():
     print("\n---PLATOS AGREGADOS---\n")
-    if(len(platos) == 0):
+    
+    if len(platos) == 0:
         print("No hay platos para mostrar!")
     else:
+        # Mostrar platos sin ordenar
         for plato in platos:
             print(f"Nombre: {plato[0]}, Cantidad: {plato[1]}, Precio: {plato[2]:.2f}\n")
-
-    salir = int(input("Ingresa 1 para volver: "))
-    if salir == 1:
+    
+    opcion = int(input("Ingresa 1 para volver || 2 para ordenar por menor precio: "))
+    
+    if opcion == 1:
         display_menu()
-       
+    elif opcion == 2:
+        ordenar_por_precio()
+        ver_platos()
+    else:
+        print("Opción no válida!")
+        display_menu()
+
+#Esta funcion permite eliminar platos del inventario     
 def eliminar():
     print("\n---ELIMINAR PLATOS---\n")
     platoEliminar = input("Ingresa el nombre del plato que deseas eliminar: ").lower()
@@ -105,10 +117,11 @@ def eliminar():
             print("No se encontró ese plato!")
             display_menu()
 
+#Esta funcion permite modificar los platos del inventario
 def modificar():
     print("\n---MODIFICAR PLATOS---")
     platoModificar = input("Ingresa el nombre del plato que deseas modificar: ").lower()
-    for i, plato in enumerate(platos):
+    for plato in enumerate(platos):
         if plato[0].lower() == platoModificar:
             plato[0] = input("Ingresa el nuevo nombre: ")
             plato[1] = int(input("Ingresa el nuevo stock: "))
@@ -118,5 +131,15 @@ def modificar():
         else:
             print("No se encontró ese plato!")
             display_menu()
+
+# Algoritmo de ordenamiento por seleccion del precio
+def ordenar_por_precio():
+    n = len(platos)
+    for i in range(n):
+        min_idx = i
+        for j in range(i + 1, n):
+            if platos[j][2] < platos[min_idx][2]:  # Comparando el precio
+                min_idx = j
+        platos[i], platos[min_idx] = platos[min_idx], platos[i]  # Intercambiar platos
 if __name__ == "__main__":
     display_menu()
