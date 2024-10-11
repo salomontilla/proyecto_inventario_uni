@@ -84,7 +84,16 @@ def ver_platos():
         display_menu()
        
 def eliminar():
-    print("eliminar")
+    print("---ELIMINAR PLATOS---\n")
+    platoEliminar = input("Ingresa el nombre del plato que deseas eliminar: ").lower()
+    for plato in platos:
+        if plato['nombre'].lower() == platoEliminar:
+            platos.remove(plato)
+            print("El plato "+platoEliminar+" ha sido eliminado!\n")
+            display_menu()
+        else:
+            print("No se encontró ese plato!")
+            display_menu()
 def modificar():
     print("modificar")
 if __name__ == "__main__":
