@@ -44,10 +44,18 @@ def display_menu():
                 agregrar()
                 break
             case 2:
-                eliminar()
+                if len(platos) != 0:
+                    eliminar()
+                else:
+                    print("No hay platos para eliminar!\n")
+                    display_menu()
                 break
             case 3:
-                modificar()
+                if len(platos) != 0:
+                    modificar()
+                else:
+                    print("No hay platos para modificar!\n")
+                    display_menu()
                 break
             case 4:
                 ver_platos()
@@ -64,7 +72,7 @@ def agregrar():
         nombre_ingre = input("Ingresa el nombre de el plato: ")
         cantidad = int(input("Ingresa el stock del plato: "))
         precio = float(input("Ingresa el precio del plato: "))
-        plato = {"nombre":nombre_ingre, "cantidad":cantidad, "precio":precio}
+        plato = [nombre_ingre, cantidad, precio]
         platos.append(plato)
         
         salir = int(input("Ingresa 1 para agregar otro plato / 0 para salir: "))
@@ -73,28 +81,42 @@ def agregrar():
             salir = 0
 
 def ver_platos():
-    print("---PLATOS AGREGADOS---\n")
+    print("\n---PLATOS AGREGADOS---\n")
     if(len(platos) == 0):
         print("No hay platos para mostrar!")
     else:
         for plato in platos:
-            print(plato)
-    salir = int(input("\nIngresa 1 para volver: "))
+            print(f"Nombre: {plato[0]}, Cantidad: {plato[1]}, Precio: {plato[2]:.2f}\n")
+
+    salir = int(input("Ingresa 1 para volver: "))
     if salir == 1:
         display_menu()
        
 def eliminar():
-    print("---ELIMINAR PLATOS---\n")
+    print("\n---ELIMINAR PLATOS---\n")
     platoEliminar = input("Ingresa el nombre del plato que deseas eliminar: ").lower()
-    for plato in platos:
-        if plato['nombre'].lower() == platoEliminar:
-            platos.remove(plato)
-            print("El plato "+platoEliminar+" ha sido eliminado!\n")
+    #Busqueda de plato
+    for i, plato in enumerate(platos):
+        if plato[0].lower() == platoEliminar:
+            platos.pop(i)
+            print(f"El plato '{platoEliminar}' ha sido eliminado.")
             display_menu()
         else:
             print("No se encontró ese plato!")
             display_menu()
+
 def modificar():
-    print("modificar")
+    print("\n---MODIFICAR PLATOS---")
+    platoModificar = input("Ingresa el nombre del plato que deseas modificar: ").lower()
+    for i, plato in enumerate(platos):
+        if plato[0].lower() == platoModificar:
+            plato[0] = input("Ingresa el nuevo nombre: ")
+            plato[1] = int(input("Ingresa el nuevo stock: "))
+            plato[2] = float(input("Ingresa el nuevo precio: "))
+            print(f"El plato '{platoModificar}' ha sido modificado!\n")
+            display_menu()
+        else:
+            print("No se encontró ese plato!")
+            display_menu()
 if __name__ == "__main__":
     display_menu()
