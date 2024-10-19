@@ -109,11 +109,12 @@ def eliminar():
             print("No se encontró ese plato!")
             display_menu()
 
-#Esta funcion permite modificar los platos del inventario
+#Esta funcion permite modificar los platos del inventario 
+#Utiliza un algoritmo basico de busqueda para determinar si el plato existe o no
 def modificar():
     print("\n---MODIFICAR PLATOS---")
     platoModificar = input("Ingresa el nombre del plato que deseas modificar: ").lower()
-    for plato in enumerate(platos):
+    for idx, plato in enumerate(platos):
         if plato[0].lower() == platoModificar:
             plato[0] = input("Ingresa el nuevo nombre: ")
             plato[1] = int(input("Ingresa el nuevo stock: "))
