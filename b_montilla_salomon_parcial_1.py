@@ -1,10 +1,7 @@
 '''
 PROBLEMA:
 ----------
-La aplicación permite gestionar un inventario de platos, 
-calcular el costo de los platos en función 
-de los platos utilizados, y determinar el 
-precio ideal de venta para maximizar las ganancias.
+La aplicación permite gestionar un inventario de platos.
 ----------
 TECNOLOGIAS A UTILIZAR:
 ----------
@@ -22,12 +19,9 @@ un plato existente (precio, cantidad, etc.).
 3. Eliminar platos: Remover platos que ya no 
 se utilizan.
 
-Cálculo de Costos y Precios:
-1. Calcular Costo de Plato: Determinar el costo total de un 
-plato basado en la receta y los precios de los platos.
+4. Usar algoritmos de ordenamiento para ver los platos
+del mas barato al mas caro.
 
-2. Establecer Precio de Venta: Proponer un precio de venta para el plato basado 
-en el costo y el margen de ganancia deseado.
 ----------
 '''
 #Esta funcion despliega el menú de opciones
