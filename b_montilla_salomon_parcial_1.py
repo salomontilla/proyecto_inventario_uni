@@ -25,7 +25,6 @@ del mas barato al mas caro.
 ----------
 '''
 #Esta funcion despliega el menú de opciones
-# Lista global para almacenar los platos
 platos = []
 
 class Plato:
