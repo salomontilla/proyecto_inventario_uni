@@ -1,5 +1,30 @@
-import json
+'''
+PROBLEMA:
+----------
+La aplicación permite gestionar un inventario de platos.
+----------
+TECNOLOGIAS A UTILIZAR:
+----------
+- Python
+----------
+PLANIFICACION:
+----------
+Gestión de platos:
+1. Agregar platos: El usuario puede añadir nuevos 
+platos al inventario con sus costos respectivos.
 
+2. Actualizar platos: Modificar la información de 
+un plato existente (precio, cantidad, etc.).
+
+3. Eliminar platos: Remover platos que ya no 
+se utilizan.
+
+4. Usar algoritmos de ordenamiento para ver los platos
+del mas barato al mas caro.
+
+----------
+'''
+#Esta funcion despliega el menú de opciones
 platos = []
 
 class Plato:
