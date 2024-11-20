@@ -1,31 +1,5 @@
-'''
-PROBLEMA:
-----------
-La aplicación permite gestionar un inventario de platos.
-----------
-TECNOLOGIAS A UTILIZAR:
-----------
-- Python
-----------
-PLANIFICACION:
-----------
-Gestión de platos:
-1. Agregar platos: El usuario puede añadir nuevos 
-platos al inventario con sus costos respectivos.
+import json
 
-2. Actualizar platos: Modificar la información de 
-un plato existente (precio, cantidad, etc.).
-
-3. Eliminar platos: Remover platos que ya no 
-se utilizan.
-
-4. Usar algoritmos de ordenamiento para ver los platos
-del mas barato al mas caro.
-
-----------
-'''
-#Esta funcion despliega el menú de opciones
-# Lista global para almacenar los platos
 platos = []
 
 class Plato:
@@ -33,9 +7,23 @@ class Plato:
         self.nombre_plato = nombre_plato
         self.precio = precio
         self.stock = stock
-
+    
     def __str__(self):
         return f"Plato: {self.nombre_plato}, Stock: {self.stock}, Precio: ${self.precio}"
+
+def cargar_platos():
+    global platos
+    try:
+        with open('platos.txt', 'r') as file:
+            data = json.load(file)
+            platos = [Plato(p['nombre'], p['precio'], p['stock']) for p in data]
+    except FileNotFoundError:
+        platos = []
+
+def guardar_platos():
+    data = [{'nombre': p.nombre_plato, 'precio': p.precio, 'stock': p.stock} for p in platos]
+    with open('platos.txt', 'w') as file:
+        json.dump(data, file)
 
 def agregar_plato():
     salir = 1
@@ -46,6 +34,7 @@ def agregar_plato():
         
         plato = Plato(nombre_plato, precio, stock)
         platos.append(plato)
+        guardar_platos()  # Guardar después de agregar
         
         salir = int(input("Ingresa 1 para agregar otro plato / 0 para salir: "))
     display_menu()
@@ -77,6 +66,7 @@ def eliminar_plato():
     for i, plato in enumerate(platos):
         if plato.nombre_plato.lower() == plato_eliminar:
             platos.pop(i)
+            guardar_platos()  # Guardar después de eliminar
             print(f"El plato '{plato_eliminar}' ha sido eliminado.")
             display_menu()
             return
@@ -93,6 +83,7 @@ def modificar_plato():
             plato.nombre_plato = input("Ingresa el nuevo nombre: ")
             plato.stock = int(input("Ingresa el nuevo stock: "))
             plato.precio = float(input("Ingresa el nuevo precio: "))
+            guardar_platos()  # Guardar después de modificar
             print(f"El plato '{plato_modificar}' ha sido modificado!\n")
             display_menu()
             return
@@ -102,6 +93,7 @@ def modificar_plato():
 
 def ordenar_por_precio():
     platos.sort(key=lambda x: x.precio)
+    guardar_platos()  # Guardar después de ordenar
 
 def display_menu():
     salir = False
@@ -133,6 +125,7 @@ def display_menu():
             print("Por favor, ingresa un número válido!")
 
 def main():
+    cargar_platos()  # Cargar platos al inicio
     display_menu()
 
 if __name__ == "__main__":
